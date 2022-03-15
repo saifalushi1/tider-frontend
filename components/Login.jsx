@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { FormGroup, Input, Label, FormFeedback, Form } from "reactstrap";
 
 const Login = ({ loginRequest, storeId, isLoginInfoIncorrect, userId, userAuthToken }) => {
@@ -39,10 +39,10 @@ const Login = ({ loginRequest, storeId, isLoginInfoIncorrect, userId, userAuthTo
       </FormGroup>
       <input type="submit" value={`submit`} className="login-button" />
       <p className="create-new-account">
-        <Link to="/signup">Create a new account</Link>
+        <Link href="/">Create a new account</Link>
       </p>
       <p className="forgot-password">
-        <Link to="/reset-password">Forgot password?</Link>
+        <Link href="/">Forgot password?</Link>
       </p>
     </Form>
   ) : (
@@ -74,10 +74,10 @@ const Login = ({ loginRequest, storeId, isLoginInfoIncorrect, userId, userAuthTo
       </FormGroup>
       <input type="submit" value={`submit`} className="login-button" />
       <p className="create-new-account">
-        <Link to="/signup">Create a new account</Link>
+        <Link href="/">Create a new account</Link>
       </p>
       <p className="forgot-password">
-        <Link to="/resetPassword">Forgot password?</Link>
+      <Link href="/">Forgot password?</Link>
       </p>
     </Form>
   );

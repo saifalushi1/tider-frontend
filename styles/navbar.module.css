@@ -1,0 +1,24 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 99;
+    height: 12rem;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: white;
+}
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo-name{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+}

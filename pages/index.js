@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css'
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import axios from 'axios'
+import Nav from '../components/Nav'
 
 export default function Home({ token }) {
 	const [posts, setposts] = useState(null)
@@ -67,6 +68,7 @@ export default function Home({ token }) {
 				<title>Tider</title>
 				<meta name='keywords' content='reddit clone, social media, reddit' />
 			</Head>
+            <Nav />
             <form>
                 <p>hsadas</p>
 
