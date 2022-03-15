@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import axios from 'axios'
 import Nav from '../components/Nav'
+import Post from "../components/Post"
 
 export default function Home({ token }) {
 	const [posts, setposts] = useState(null)
@@ -70,7 +71,7 @@ export default function Home({ token }) {
 			</Head>
             <Nav />
             <form>
-                <p>hsadas</p>
+                <Post />
 
             </form>
 		</>

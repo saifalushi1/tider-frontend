@@ -1,87 +1,77 @@
 import React, { useState } from "react";
+import axios from "axios";
 import Link from "next/link";
-import { FormGroup, Input, Label, FormFeedback, Form } from "reactstrap";
+import Head from "next/head";
+import { useRouter } from "next/router";
 
 const Login = ({ loginRequest, storeId, isLoginInfoIncorrect, userId, userAuthToken }) => {
-  const [inputEmailValue, setinputEmailValue] = useState("");
+  const [inputUsernameValue, setinputUsernameValue] = useState("");
   const [inputPasswordValue, setInputPasswordValue] = useState("");
+  const router = useRouter()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    loginRequest(inputEmailValue, inputPasswordValue);
-    storeId(inputEmailValue);
+    const authURL = 'http://localhost:8000/api/token/' 
+    try {
+          await axios.post(authURL, {username: inputUsernameValue, password: inputPasswordValue})
+            .then((res) => {
+            console.log(res)
+            setJwt(res.data.access)
+            console.log("Response: " + res.data.access)
+          })
+          .catch(err => console.log(err))
+          router.push('/')
+      } catch (err) {
+        console.log(err)
+      }
   };
 
-  return isLoginInfoIncorrect === false ? (
-    <Form onSubmit={(e) => handleSubmit(e)}>
-      <h3>Login</h3>
-      <FormGroup>
-        <Label for="exampleEmail">Email</Label>
-        <Input
-          type="email"
-          value={inputEmailValue}
-          className="login-parameters"
-          placeholder="Enter email"
-          onChange={(e) => setinputEmailValue(e.target.value)}
+  return <div className="flex bg-white">
+  <Head>
+    <title>Login</title>
+  </Head>
+
+  <div
+    className="h-screen bg-center bg-cover w-36"
+    style={{
+      backgroundImage: `url('https://media.wired.com/photos/5abece0a9ccf76090d775185/191:100/w_1280,c_limit/hangoutsscreen_2.jpg')`,
+    }}
+  ></div>
+  <div className="flex flex-col justify-center pl-6">
+    <div className="w-70">
+      <h1 className="mb-2 text-lg font-medium">Login</h1>
+      <p className="mb-10 text-xs">
+        By continuing, you agree to our User Agreement and Privacy Policy
+      </p>
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <input
+          className="mb-2"
+          type="text"
+          value={inputUsernameValue}
+          onChange={(e) => setinputUsernameValue(e.target.value)}
+          placeholder="USERNAME"
         />
-        <FormFeedback valid></FormFeedback>
-      </FormGroup>
-      <FormGroup>
-        <Label for="examplePassword">Password</Label>
-        <Input
+        <input
+          className="mb-4"
           type="password"
           value={inputPasswordValue}
-          className="login-parameters"
-          placeholder="Enter password"
           onChange={(e) => setInputPasswordValue(e.target.value)}
+          placeholder="PASSWORD"
         />
-        <FormFeedback valid></FormFeedback>
-      </FormGroup>
-      <input type="submit" value={`submit`} className="login-button" />
-      <p className="create-new-account">
-        <Link href="/">Create a new account</Link>
-      </p>
-      <p className="forgot-password">
-        <Link href="/">Forgot password?</Link>
-      </p>
-    </Form>
-  ) : (
-    <Form onSubmit={(e) => handleSubmit(e)}>
-      <h3>Login</h3>
-      <FormGroup>
-        <Label for="exampleEmail">Email</Label>
-        <Input
-          type="email"
-          value={inputEmailValue}
-          className="login-parameters"
-          placeholder="Enter email"
-          onChange={(e) => setinputEmailValue(e.target.value)}
-          invalid
-        />
-        <FormFeedback valid></FormFeedback>
-      </FormGroup>
-      <FormGroup>
-        <Label for="examplePassword">Password</Label>
-        <Input
-          type="password"
-          value={inputPasswordValue}
-          className="login-parameters"
-          placeholder="Enter password"
-          onChange={(e) => setInputPasswordValue(e.target.value)}
-          invalid
-        />
-        <FormFeedback invalid>User Email or Password Is Incorrect</FormFeedback>
-      </FormGroup>
-      <input type="submit" value={`submit`} className="login-button" />
-      <p className="create-new-account">
-        <Link href="/">Create a new account</Link>
-      </p>
-      <p className="forgot-password">
-      <Link href="/">Forgot password?</Link>
-      </p>
-    </Form>
-  );
-  // </>
+
+        <button className="w-full py-2 mb-4 text-xs font-bold text-white uppercase bg-blue-500 border border-blue-500 rounded">
+          Login
+        </button>
+      </form>
+      <small>
+        New to Tider?
+        <Link href="/register">
+          <a className="ml-1 text-blue-500 uppercase">Sign Up</a>
+        </Link>
+      </small>
+    </div>
+  </div>
+</div>
 };
 
 export default Login;

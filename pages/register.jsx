@@ -14,28 +14,27 @@ const register = () => {
 	const router = useRouter()
 
 	const submitForm = async (e) => {
-        const headers = {
-            'Content-Type': 'application/json',
-            // 'Authorization': `Bearer ${userAuthToken}`,
-        }
+		const headers = {
+			'Content-Type': 'application/json',
+			// 'Authorization': `Bearer ${userAuthToken}`,
+		}
 		e.preventDefault()
 		try {
 			await axios.post('http://localhost:8000/register/', {
 				username: username,
-                password: password,
-                password2: password,
-                email: email,
-                first_name: 'bob',
-                last_name: "marley"
-			})
+				password: password,
+				password2: password,
+				email: email,
+				first_name: 'bob',
+				last_name: 'marley',
+			}, {headers: headers})
 
 			router.push('/login')
 		} catch (err) {
 			// setErrors(err.response.data)
-            console.log(err)
+			console.log(err)
 		}
 	}
-
 
 	return (
 		<div className='flex bg-white'>
@@ -45,7 +44,9 @@ const register = () => {
 
 			<div
 				className='h-screen bg-center bg-cover w-36'
-				style={{ backgroundImage: "url('https://i.redd.it/ax8u9llk8jy61.jpg')" }}
+				style={{
+					backgroundImage: "url('https://i.redd.it/ax8u9llk8jy61.jpg')",
+				}}
 			></div>
 			<div className='flex flex-col justify-center pl-6'>
 				<div className='w-70'>
@@ -61,7 +62,7 @@ const register = () => {
 							setValue={setEmail}
 							placeholder='EMAIL'
 							error={errors.email}
-                            onChange={(e) => setEmail(e.target.value)}
+							onChange={(e) => setEmail(e.target.value)}
 						/>
 						<input
 							className='mb-2'
@@ -70,7 +71,7 @@ const register = () => {
 							setValue={setUsername}
 							placeholder='USERNAME'
 							error={errors.username}
-                            onChange={(e) => setUsername(e.target.value)}
+							onChange={(e) => setUsername(e.target.value)}
 						/>
 						<input
 							className='mb-4'
@@ -79,7 +80,7 @@ const register = () => {
 							setValue={setPassword}
 							placeholder='PASSWORD'
 							error={errors.password}
-                            onChange={(e) => setPassword(e.target.value)}
+							onChange={(e) => setPassword(e.target.value)}
 						/>
 
 						<button className='w-full py-2 mb-4 text-xs font-bold text-white uppercase bg-blue-500 border border-blue-500 rounded'>
