@@ -20,7 +20,7 @@ const register = () => {
 		}
 		e.preventDefault()
 		try {
-			await axios.post('http://localhost:8000/register/', {
+			await axios.post('https://obscure-island-29033.herokuapp.com/register/', {
 				username: username,
 				password: password,
 				password2: password,

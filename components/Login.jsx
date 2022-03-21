@@ -4,25 +4,29 @@ import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-const Login = ({ loginRequest, storeId, isLoginInfoIncorrect, userId, userAuthToken }) => {
+const Login = ({ userAuthToken }) => {
   const [inputUsernameValue, setinputUsernameValue] = useState("");
   const [inputPasswordValue, setInputPasswordValue] = useState("");
   const router = useRouter()
 
   const handleSubmit = async (e) => {
+    const headers = {
+		'Content-Type': 'application/json',
+		'Authorization': `Bearer ${userAuthToken}`,
+	}
     e.preventDefault();
-    const authURL = 'http://localhost:8000/api/token/' 
+    const authURL = 'https://obscure-island-29033.herokuapp.com/api/token/' 
     try {
           await axios.post(authURL, {username: inputUsernameValue, password: inputPasswordValue})
             .then((res) => {
-            console.log(res)
-            setJwt(res.data.access)
+            console.log("Login request:", res)
+            localStorage.setItem("JWT", res.data.access)
             console.log("Response: " + res.data.access)
           })
           .catch(err => console.log(err))
           router.push('/')
       } catch (err) {
-        console.log(err)
+        console.log("Login request:", err)
       }
   };
 

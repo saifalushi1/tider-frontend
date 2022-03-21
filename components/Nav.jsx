@@ -9,7 +9,7 @@ const Nav = () => {
 				<div className='flex items-center'>
 					<Link href='/'>
 						<a>
-							<img src={RedditLogo} classname="w-8 h-8 mr-2" alt="tider logo" />
+							<img src={RedditLogo} className="w-8 h-8 mr-2" alt="tider logo" />
 						</a>
 					</Link>
 					<span className='text-2xl font-semibold'>
