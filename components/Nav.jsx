@@ -9,11 +9,11 @@ const Nav = () => {
 				<div className='flex items-center'>
 					<Link href='/'>
 						<a>
-							<img src={RedditLogo} className="w-8 h-8 mr-2" alt="tider logo" />
+							<img src={RedditLogo} className="w-8 h-8 mr-2" alt="weddit logo" />
 						</a>
 					</Link>
 					<span className='text-2xl font-semibold'>
-						<Link href='/'>tider</Link>
+						<Link href='/'>weddit</Link>
 					</span>
 				</div>
 				{/* Serach Input */}

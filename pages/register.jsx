@@ -88,7 +88,7 @@ const register = () => {
 						</button>
 					</form>
 					<small>
-						Already a tider?
+						Already a weddit?
 						<Link href='/login'>
 							<a className='ml-1 text-blue-500 uppercase'>Log In</a>
 						</Link>

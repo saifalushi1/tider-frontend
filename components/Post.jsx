@@ -16,7 +16,7 @@ const Post = ({ post }) => {
     }, [post])
 
     const vote = async (value) => {
-        // if (!authenticated) router.push('/login')
+        if (!authenticated) router.push('/login')
         
         if (value === userVote) value = 0
     
@@ -35,9 +35,9 @@ const Post = ({ post }) => {
           className="flex justify-center mb-4 bg-white roundeditems-center mt-7"
           
         >
-          {/* Vote section */}
+
           <div className="w-10 py-3 text-center bg-gray-200 rounded-l">
-            {/* Upvote */}
+            
             <div
               className="w-6 mx-auto text-gray-400 rounded cursor-pointer hover:bg-gray-300 hover:text-red-500"
               onClick={() => vote(1)}
@@ -47,7 +47,6 @@ const Post = ({ post }) => {
               ></i>
             </div>
             <p className="text-xs font-bold">{post.vote}</p>
-            {/* Downvote */}
             <div
               className="w-6 mx-auto text-gray-400 rounded cursor-pointer hover:bg-gray-300 hover:text-blue-600"
               onClick={() => vote(-1)}
@@ -57,7 +56,6 @@ const Post = ({ post }) => {
               ></i>
             </div>
           </div>
-          {/* Post data section */}
           <div className="w-full p-2">
             <div className="flex items-center">
               <p className="text-xs text-gray-500">
