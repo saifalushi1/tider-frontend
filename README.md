@@ -1,8 +1,8 @@
 <h1>Tider</h1>
 
-<p>Tider is a reddit clone built using Next.js, Tailwind, Django, and Postgres.
+<p>Tider is a Reddit clone built using Next.js, Tailwind, Django, and Postgres.
 
-I use reddit peronsally for news, gaming, new shows, etc... So I wanted to give it a shot at building my own version.</p>
+I use Reddit personally for news, gaming, new shows, etc... So I wanted to give it a shot at building my own version.</p>
 
 <br />
 
